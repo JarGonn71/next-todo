@@ -5,10 +5,10 @@ const Notice = require('../models/Notice')
 
 router.post('/add', async(req, res)=>{
     try{
-        const {title, todo, timeInfo} = req.body
+        const {title, todo, timeInfo, color} = req.body
         
         const notice = new Notice({
-            title, todo, timeInfo
+            title, todo, timeInfo, color
         })
 
         await notice.save()
