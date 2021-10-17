@@ -45,12 +45,7 @@ router.post('/update/:id', async (req, res) => {
     try{
         const {id} = req.params
         const todoList = req.body
-        let notice
-        if(todoList.hasOwnProperty("title")){
-            notice = await Notice.updateOne({_id: id}, {$set: {title: todoList.title}})
-        }else{
-            notice = await Notice.updateOne({_id: id}, {$set: {todo: todoList}})
-        }
+        const notice = await Notice.updateOne({_id: id}, {$set: {title: todoList.title, todo: todoList.todo, color: todoList.color }})
 
         res.json(notice)
     } catch(error){
